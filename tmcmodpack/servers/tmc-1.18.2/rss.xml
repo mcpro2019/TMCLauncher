@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
-  <channel>
-    <title>Test</title>
-    <link>https://github.com/mcpro2019/TMCLauncher</link>
-	    <item>
-      <title>Welcome to TMC Launcher!</title>
-      <content:encoded>
-        <![CDATA[<p>If you're watching this, you're using the demo distribution file.</p></br>
-          <p>This file is not meant to be used in production environment. You can generate it using <a href="https://github.com/dscalzi/nebula">Nebula</a></p>
-        ]]>
-      </content:encoded>
-<!--<dc:creator>GeekCorner</dc:creator>-->
-      <pubDate>11 March 2023 03:49:01</pubDate>
-<!--      <slash:comments>2023</slash:comments>-->
-	</item>
-    <item>
-      <title>Yes, news module supports multiple articles!</title>
-      <content:encoded>
-        <![CDATA[<p>This will allow you to link your blog rss function to Helios Launcher</p></br>
-    <ul>
-    <li>HTML is supported too</li>
-    </ul>
-    ]]>
-      </content:encoded>
-    <author>test</author>
-      <pubDate>09 March 2023 03:19:00</pubDate>
-  </item>
-  </channel>
+<script/>
+<script/>
+<channel>
+<title>Helios Launcher demo</title>
+<link>https://github.com/mcpro2019/TMCLauncher</link>
+<item>
+<title>Welcome to Helios Launcher!</title>
+<content:encoded>
+<![CDATA[ <p>If you're watching this, you're using the demo distribution file.</p></br> <p>This file is not meant to be used in production environment. You can generate it using <a href="https://github.com/dscalzi/nebula">Nebula</a></p> ]]>
+</content:encoded>
+<!-- <dc:creator>GeekCorner</dc:creator> -->
+<pubDate>11 March 2023 03:49:01</pubDate>
+<!--       <slash:comments>2023</slash:comments> -->
+</item>
+<item>
+<title>Yes, news module supports multiple articles!</title>
+<content:encoded>
+<![CDATA[ <p>This will allow you to link your blog rss function to Helios Launcher</p></br> <ul> <li>HTML is supported too</li> </ul> ]]>
+</content:encoded>
+<author>GeekCorner</author>
+<pubDate>09 March 2023 03:19:00</pubDate>
+</item>
+</channel>
 </rss>

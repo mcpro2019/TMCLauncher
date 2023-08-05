@@ -20,13 +20,13 @@
           "minimum": 1024
         }
     },
-    "rss": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/rss.xml",
+    "rss": "https://raw.githubusercontent.com/mcpro2019/TMCLauncher/main/tmcmodpack/servers/tmc-1.18.2/rss.xml",
     "servers": [
       {
         "id": "tmc-1.18.2",
         "name": "The Mars City",
         "description": "Minecraft 1.18.2",
-        "icon": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/tmc-1.18.2.png",
+        "icon": "https://raw.githubusercontent.com/mcpro2019/TMCLauncher/main/tmcmodpack/servers/tmc-1.18.2/tmc-1.18.2.png",
         "version": "1.0.0",
         "address": "themarscity.ddns.net:25565",
         "minecraftVersion": "1.18.2",

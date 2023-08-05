@@ -11,16 +11,8 @@
 <![CDATA[ <p>Welcome to TMC Launcher!</p></br> <p>Welcome to TMC Launcher!</a></p> ]]>
 </content:encoded>
 <!-- <dc:creator>GeekCorner</dc:creator> -->
-<pubDate>6/8/2023 01:12</pubDate>
+<pubDate>8/6/2023 01:12</pubDate>
 <!--       <slash:comments>2023</slash:comments> -->
-</item>
-<item>
-<title>Yes, news module supports multiple articles!</title>
-<content:encoded>
-<![CDATA[ <p>This will allow you to link your blog rss function to Helios Launcher</p></br> <ul> <li>HTML is supported too</li> </ul> ]]>
-</content:encoded>
-<author>GeekCorner</author>
-<pubDate>09 March 2023 03:19:00</pubDate>
 </item>
 </channel>
 </rss>

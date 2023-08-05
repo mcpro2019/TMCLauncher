@@ -48,6 +48,7 @@
                         "url": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.11.2-13.20.1.2429/forge-1.11.2-13.20.1.2429-universal.jar"
                     },
                     "subModules": [
+                        
                     ]
                 }
             ]

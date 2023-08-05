@@ -2,4 +2,4 @@
  A custom minecraft launcher for a private server
 
 
-Orignal Launcher: [HeliosLauncher](https://github.com/dscalzi/HeliosLauncher)
+Original Launcher: [HeliosLauncher](https://github.com/dscalzi/HeliosLauncher)

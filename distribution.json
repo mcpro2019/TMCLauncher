@@ -20,7 +20,7 @@
           "minimum": 1024
         }
     },
-    "rss": "https://raw.githubusercontent.com/mcpro2019/TMCLauncher/main/tmcmodpack/servers/tmc-1.18.2/rss.rss",
+    "rss": "https://helios-files.geekcorner.eu.org/rss.xml",
     "servers": [
       {
         "id": "tmc-1.18.2",

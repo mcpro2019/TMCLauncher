@@ -5,7 +5,6 @@
         "smallImageText": "WesterosCraft",
         "smallImageKey": "seal-circle"
     },
-    "rss": "",
     "java": {
         "supported": ">=17",
         "suggestedMajor": 17,
@@ -21,37 +20,1000 @@
           "minimum": 4096
         }
     },
+    "rss": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/rss.xml",
     "servers": [
-        {
-            "id": "TMC",
-            "name": "The Mars City",
-            "description": "test",
-            "icon": "https://cdn.discordapp.com/attachments/576019145770926100/1137321076330876948/The_Mars_Network.png",
-            "version": "0.0.1",
-            "address": "themarscity.ddns.net",
-            "minecraftVersion": "1.18.2",
-            "discord": {
-                "shortId": "TMC",
-                "largeImageText": "The Mars City",
-                "largeImageKey": "The Mars City"
+      {
+        "id": "tmc-1.18.2",
+        "name": "The Mars City",
+        "description": "Minecraft 1.18.2",
+        "icon": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/tmc-1.18.2.png",
+        "version": "1.0.0",
+        "address": "themarscity.ddns.net:25565",
+        "minecraftVersion": "1.18.2",
+        "mainServer": true,
+        "autoconnect": true,
+        "modules": [
+          {
+            "id": "net.minecraftforge:lowcodelanguage:1.18.2-40.2.10",
+            "name": "Minecraft Forge (lowcodelanguage)",
+            "type": "ForgeHosted",
+            "classpath": true,
+            "artifact": {
+              "size": 7382,
+              "MD5": "1e6fab0bc196e0670c1b5010166e715f",
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/lowcodelanguage/1.18.2-40.2.10/lowcodelanguage-1.18.2-40.2.10.jar"
             },
-            "mainServer": true,
-            "autoconnect": true,
-            "modules": [
-                {
-                    "id": "net.minecraftforge:forge:1.18.2-40.2.10",
-                    "name": "Minecraft Forge 1.18.2-40.2.10",
-                    "type": "ForgeHosted",
-                    "artifact": {
-                        "size": 4450992,
-                        "MD5": "3fcc9b0104f0261397d3cc897e55a1c5",
-                        "url": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.11.2-13.20.1.2429/forge-1.11.2-13.20.1.2429-universal.jar"
-                    },
-                    "subModules": [
-                        
-                    ]
+            "subModules": [
+              {
+                "id": "1.18.2-40.2.10",
+                "name": "Minecraft Forge (version.json)",
+                "type": "VersionManifest",
+                "artifact": {
+                  "size": 15551,
+                  "MD5": "c000a250da0ca8270a9ed900a964acfb",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/versions/1.18.2-forge-40.2.10/1.18.2-forge-40.2.10.json"
                 }
+              },
+              {
+                "id": "net.minecraftforge:fmlcore:1.18.2-40.2.10",
+                "name": "Minecraft Forge (fmlcore)",
+                "type": "Library",
+                "classpath": true,
+                "artifact": {
+                  "size": 109984,
+                  "MD5": "5238089a45c7f2374db709fc783b12d0",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/fmlcore/1.18.2-40.2.10/fmlcore-1.18.2-40.2.10.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraftforge:javafmllanguage:1.18.2-40.2.10",
+                "name": "Minecraft Forge (javafmllanguage)",
+                "type": "Library",
+                "classpath": true,
+                "artifact": {
+                  "size": 16292,
+                  "MD5": "075159ba07c4cb5c6db4ae99bf5373c9",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/javafmllanguage/1.18.2-40.2.10/javafmllanguage-1.18.2-40.2.10.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraftforge:mclanguage:1.18.2-40.2.10",
+                "name": "Minecraft Forge (mclanguage)",
+                "type": "Library",
+                "classpath": true,
+                "artifact": {
+                  "size": 4987,
+                  "MD5": "ee9191310d1927c829eb77e56e65fd8f",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/mclanguage/1.18.2-40.2.10/mclanguage-1.18.2-40.2.10.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraftforge:forge:1.18.2-40.2.10:universal",
+                "name": "Minecraft Forge (universal jar)",
+                "type": "Library",
+                "classpath": false,
+                "artifact": {
+                  "size": 2519264,
+                  "MD5": "497f7bf01a7de473df1297bcb7c56584",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/forge/1.18.2-40.2.10/forge-1.18.2-40.2.10-universal.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraftforge:forge:1.18.2-40.2.10:client",
+                "name": "Minecraft Forge (client jar)",
+                "type": "Library",
+                "classpath": false,
+                "artifact": {
+                  "size": 4367142,
+                  "MD5": "05718718e2718473d25227ece0d800fa",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/forge/1.18.2-40.2.10/forge-1.18.2-40.2.10-client.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraft:client:1.18.2-20220404.173914:srg",
+                "name": "Minecraft Forge (client srg)",
+                "type": "Library",
+                "classpath": false,
+                "artifact": {
+                  "size": 13796791,
+                  "MD5": "49d0ce9681f0ffd3c5a177f6ad45c80b",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraft/client/1.18.2-20220404.173914/client-1.18.2-20220404.173914-srg.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraft:client:1.18.2-20220404.173914:slim",
+                "name": "Minecraft Forge (client slim)",
+                "type": "Library",
+                "classpath": false,
+                "artifact": {
+                  "size": 10909711,
+                  "MD5": "62184203a1e66c6c72b415b7d6e64c0d",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraft/client/1.18.2-20220404.173914/client-1.18.2-20220404.173914-slim.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "net.minecraft:client:1.18.2-20220404.173914:extra",
+                "name": "Minecraft Forge (client extra)",
+                "type": "Library",
+                "classpath": false,
+                "artifact": {
+                  "size": 9349972,
+                  "MD5": "5de62b239289ed8e596b386766b87b41",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraft/client/1.18.2-20220404.173914/client-1.18.2-20220404.173914-extra.jar"
+                },
+                "subModules": []
+              },
+              {
+                "id": "cpw.mods:securejarhandler:1.0.8",
+                "name": "Minecraft Forge (securejarhandler)",
+                "type": "Library",
+                "artifact": {
+                  "size": 85028,
+                  "MD5": "102e2b8d94eec8aca0da835d2d3a359e",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/cpw/mods/securejarhandler/1.0.8/securejarhandler-1.0.8.jar"
+                }
+              },
+              {
+                "id": "org.ow2.asm:asm:9.5",
+                "name": "Minecraft Forge (asm)",
+                "type": "Library",
+                "artifact": {
+                  "size": 121863,
+                  "MD5": "29721ee4b5eacf0a34b204c345c8bc69",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/ow2/asm/asm/9.5/asm-9.5.jar"
+                }
+              },
+              {
+                "id": "org.ow2.asm:asm-commons:9.5",
+                "name": "Minecraft Forge (asm-commons)",
+                "type": "Library",
+                "artifact": {
+                  "size": 72209,
+                  "MD5": "7d1fce986192f71722b19754e4cb9e61",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.jar"
+                }
+              },
+              {
+                "id": "org.ow2.asm:asm-tree:9.5",
+                "name": "Minecraft Forge (asm-tree)",
+                "type": "Library",
+                "artifact": {
+                  "size": 51944,
+                  "MD5": "44755681b7d6fa7143afbb438e55c20c",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.jar"
+                }
+              },
+              {
+                "id": "org.ow2.asm:asm-util:9.5",
+                "name": "Minecraft Forge (asm-util)",
+                "type": "Library",
+                "artifact": {
+                  "size": 91076,
+                  "MD5": "ad0016249fb68bb9196babefd47b80dc",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/ow2/asm/asm-util/9.5/asm-util-9.5.jar"
+                }
+              },
+              {
+                "id": "org.ow2.asm:asm-analysis:9.5",
+                "name": "Minecraft Forge (asm-analysis)",
+                "type": "Library",
+                "artifact": {
+                  "size": 33978,
+                  "MD5": "4df0adafc78ebba404d4037987d36b61",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/ow2/asm/asm-analysis/9.5/asm-analysis-9.5.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:accesstransformers:8.0.4",
+                "name": "Minecraft Forge (accesstransformers)",
+                "type": "Library",
+                "artifact": {
+                  "size": 77756,
+                  "MD5": "f0d3533f9437ba4428eaee9f28f7ecd9",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/accesstransformers/8.0.4/accesstransformers-8.0.4.jar"
+                }
+              },
+              {
+                "id": "org.antlr:antlr4-runtime:4.9.1",
+                "name": "Minecraft Forge (antlr4-runtime)",
+                "type": "Library",
+                "artifact": {
+                  "size": 337868,
+                  "MD5": "0dcc4b860d5d8d2852ab94d58c56ca2d",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/antlr/antlr4-runtime/4.9.1/antlr4-runtime-4.9.1.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:eventbus:5.0.3",
+                "name": "Minecraft Forge (eventbus)",
+                "type": "Library",
+                "artifact": {
+                  "size": 42838,
+                  "MD5": "c8b735cdfe9975a569626d72ad40377f",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/eventbus/5.0.3/eventbus-5.0.3.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:forgespi:4.0.15-4.x",
+                "name": "Minecraft Forge (forgespi)",
+                "type": "Library",
+                "artifact": {
+                  "size": 22072,
+                  "MD5": "8509a972b27c9f037d55c61e16fc051f",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/forgespi/4.0.15-4.x/forgespi-4.0.15-4.x.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:coremods:5.0.1",
+                "name": "Minecraft Forge (coremods)",
+                "type": "Library",
+                "artifact": {
+                  "size": 24199,
+                  "MD5": "8c590051c5d65e098ca7c2e3ddf803a8",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/coremods/5.0.1/coremods-5.0.1.jar"
+                }
+              },
+              {
+                "id": "cpw.mods:modlauncher:9.1.3",
+                "name": "Minecraft Forge (modlauncher)",
+                "type": "Library",
+                "artifact": {
+                  "size": 129301,
+                  "MD5": "dca70519c3e53ac018d6f50c6f90cd38",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/cpw/mods/modlauncher/9.1.3/modlauncher-9.1.3.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:unsafe:0.2.0",
+                "name": "Minecraft Forge (unsafe)",
+                "type": "Library",
+                "artifact": {
+                  "size": 2834,
+                  "MD5": "2d1016ebe4c1a63dd50a59d26bd12db1",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/unsafe/0.2.0/unsafe-0.2.0.jar"
+                }
+              },
+              {
+                "id": "com.electronwill.night-config:core:3.6.4",
+                "name": "Minecraft Forge (core)",
+                "type": "Library",
+                "artifact": {
+                  "size": 199834,
+                  "MD5": "d83ab07267e402131fb93d899a57f5cd",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/com/electronwill/night-config/core/3.6.4/core-3.6.4.jar"
+                }
+              },
+              {
+                "id": "com.electronwill.night-config:toml:3.6.4",
+                "name": "Minecraft Forge (toml)",
+                "type": "Library",
+                "artifact": {
+                  "size": 31816,
+                  "MD5": "bc95d0709fff2164b01fd09fbc988be8",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/com/electronwill/night-config/toml/3.6.4/toml-3.6.4.jar"
+                }
+              },
+              {
+                "id": "org.apache.maven:maven-artifact:3.6.3",
+                "name": "Minecraft Forge (maven-artifact)",
+                "type": "Library",
+                "artifact": {
+                  "size": 57824,
+                  "MD5": "b83c1943a0783f3f81d4cd4c83c363e1",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/apache/maven/maven-artifact/3.6.3/maven-artifact-3.6.3.jar"
+                }
+              },
+              {
+                "id": "net.jodah:typetools:0.8.3",
+                "name": "Minecraft Forge (typetools)",
+                "type": "Library",
+                "artifact": {
+                  "size": 15425,
+                  "MD5": "ee4596e1413cc1a5e080c971d6064753",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/jodah/typetools/0.8.3/typetools-0.8.3.jar"
+                }
+              },
+              {
+                "id": "net.minecrell:terminalconsoleappender:1.2.0",
+                "name": "Minecraft Forge (terminalconsoleappender)",
+                "type": "Library",
+                "artifact": {
+                  "size": 15977,
+                  "MD5": "679363fa893293791e55a21f81342f87",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecrell/terminalconsoleappender/1.2.0/terminalconsoleappender-1.2.0.jar"
+                }
+              },
+              {
+                "id": "org.jline:jline-reader:3.12.1",
+                "name": "Minecraft Forge (jline-reader)",
+                "type": "Library",
+                "artifact": {
+                  "size": 150765,
+                  "MD5": "a2e7b012cd9802f83321187409174a94",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/jline/jline-reader/3.12.1/jline-reader-3.12.1.jar"
+                }
+              },
+              {
+                "id": "org.jline:jline-terminal:3.12.1",
+                "name": "Minecraft Forge (jline-terminal)",
+                "type": "Library",
+                "artifact": {
+                  "size": 211712,
+                  "MD5": "3c52be5ab5e3847be6e62269de924cb0",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/jline/jline-terminal/3.12.1/jline-terminal-3.12.1.jar"
+                }
+              },
+              {
+                "id": "org.spongepowered:mixin:0.8.5",
+                "name": "Minecraft Forge (mixin)",
+                "type": "Library",
+                "artifact": {
+                  "size": 1089277,
+                  "MD5": "19b3a2ae9e445a6e626fd7d1648cfcb8",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/spongepowered/mixin/0.8.5/mixin-0.8.5.jar"
+                }
+              },
+              {
+                "id": "org.openjdk.nashorn:nashorn-core:15.3",
+                "name": "Minecraft Forge (nashorn-core)",
+                "type": "Library",
+                "artifact": {
+                  "size": 2167288,
+                  "MD5": "91e98c20afa1090c344229ce28b4c53f",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/org/openjdk/nashorn/nashorn-core/15.3/nashorn-core-15.3.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:JarJarSelector:0.3.19",
+                "name": "Minecraft Forge (JarJarSelector)",
+                "type": "Library",
+                "artifact": {
+                  "size": 17374,
+                  "MD5": "2bb6cbe0e6c6fbcd8f92d2e6b1ea678e",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/JarJarSelector/0.3.19/JarJarSelector-0.3.19.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:JarJarMetadata:0.3.19",
+                "name": "Minecraft Forge (JarJarMetadata)",
+                "type": "Library",
+                "artifact": {
+                  "size": 15895,
+                  "MD5": "9633546d299d4282ca68d10582be1c8f",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/JarJarMetadata/0.3.19/JarJarMetadata-0.3.19.jar"
+                }
+              },
+              {
+                "id": "cpw.mods:bootstraplauncher:1.0.0",
+                "name": "Minecraft Forge (bootstraplauncher)",
+                "type": "Library",
+                "artifact": {
+                  "size": 7828,
+                  "MD5": "1632575563bb6ead2ae3a087945f18be",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/cpw/mods/bootstraplauncher/1.0.0/bootstraplauncher-1.0.0.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:JarJarFileSystems:0.3.19",
+                "name": "Minecraft Forge (JarJarFileSystems)",
+                "type": "Library",
+                "artifact": {
+                  "size": 32195,
+                  "MD5": "c2be1a88b63eb1b58b00ab6e498cd97d",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/JarJarFileSystems/0.3.19/JarJarFileSystems-0.3.19.jar"
+                }
+              },
+              {
+                "id": "net.minecraftforge:fmlloader:1.18.2-40.2.10",
+                "name": "Minecraft Forge (fmlloader)",
+                "type": "Library",
+                "artifact": {
+                  "size": 257530,
+                  "MD5": "651846fdf824cac218d4fa6c8a0b64a4",
+                  "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/repo/lib/net/minecraftforge/fmlloader/1.18.2-40.2.10/fmlloader-1.18.2-40.2.10.jar"
+                }
+              }
             ]
-        }
+          },
+          {
+            "id": "generated.forgemod:dynamiclightsreforged:1.18.2_v1.3.3@jar",
+            "name": "Rubidium Dynamic Lights",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 90953,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%85%B6%E4%BB%96-Rubidium]%20dynamiclightsreforged%20v1.3.3.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:rubidium_extras:1.18.2_v1.3.2@jar",
+            "name": "Rubidium Extras",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 59001,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%85%B6%E4%BB%96-Rubidium]%20rubidium_extras%20v1.3.2.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:catalogue:1.6.2@jar",
+            "name": "Catalogue",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 98216,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%85%B6%E4%BB%96]%20catalogue%20v1.6.2.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:slide_show:0.6.3@jar",
+            "name": "Slide Show",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 327342,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%85%B6%E4%BB%96]%20SlideShow-Forge-1.18-0.6.3.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:taterzens:1.9.6@jar",
+            "name": "Taterzens",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 313267,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%85%B6%E4%BB%96]%20taterzens-1.9.6-forge.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:cloth_config:6.4.90@jar",
+            "name": "Cloth Config v4 API",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1148490,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%BF%85%E8%A6%81]%20cloth-config%20v6.4.90%20[jariammusicplayer].jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:mapperbase:1.18.2-4.0.1.0@jar",
+            "name": "Mapper Base",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 168163,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%BF%85%E8%A6%81]%20mapperbase%20v4.0.1.0%20[roadstuff].jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:otyacraftengine:2.14@jar",
+            "name": "Otyacraft Engine",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 610025,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E5%BF%85%E8%A6%81]%20otyacraftengine%20v2.14%20[jariammusicplayer].jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:convenience_store:1.0.0@jar",
+            "name": "Convenience Store",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 36894309,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E5%95%86%E5%BA%97]%20RealLifeTW.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:simpleshops:1.1.4@jar",
+            "name": "Simple Shops",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 156374,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E5%95%86%E5%BA%97]%20simpleshops%20v1.2.1.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:fantasyfurniture:3.14.0@jar",
+            "name": "Fantasy's Furniture",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 3256446,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E5%AE%B6%E5%85%B7]%20fantasyfurniture-1.18.2-3.14.0.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:extlights:4.4@jar",
+            "name": "Extended Lights",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 420452,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E7%87%88%E5%85%89]%20extlights%20v4.4.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:lightestlamp:4.5.0a@jar",
+            "name": "Lightest Lamps",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 348216,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E7%87%88%E5%85%89]%20lightestlamp%20v4.5.0a.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:roadstuff:1.18.2-6.0.2@jar",
+            "name": "Road Stuff",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 5070805,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E9%81%93%E8%B7%AF]%20roadstuff%20v6.0.2.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:traffic_plus:1.3.0@jar",
+            "name": "Traffic Plus",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 3126260,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%96%B9%E5%A1%8A%E9%A1%9E-%E9%81%93%E8%B7%AF]%20Traffic_Plus%20v1.3.0.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:car:1.18.2-1.0.3@jar",
+            "name": "Ultimate Car Mod",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 2537672,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E6%B1%BD%E8%BB%8A-%E9%A3%9B%E6%A9%9F-%E7%81%AB%E8%BB%8A]%20car%20v1.0.3.jar"
+            }
+          },
+          {
+            "id": "generated.forgemod:terralith:0.0.0@jar",
+            "name": "Terralith",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 4497439,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[%E7%94%9F%E6%85%8B]%20Terralith_v2.2.3.jar"
+            }
+          },
+          {
+            "id": "net.geforcemods:securitycraft:1.9.6.1@jar",
+            "name": "SecurityCraft",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 3584722,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/[1.18.2]%20SecurityCraft%20v1.9.6.1.jar"
+            }
+          },
+          {
+            "id": "dev.architectury:architectury:4.11.93@jar",
+            "name": "Architectury",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 549226,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/architectury-4.11.93-forge.jar"
+            }
+          },
+          {
+            "id": "lol.bai.badpackets.impl:badpackets:0.1.3@jar",
+            "name": "Bad Packets API",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 25707,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/badpackets-forge-0.1.3.jar"
+            }
+          },
+          {
+            "id": "de.bluecolored:bluemap:3.13@jar",
+            "name": "BlueMap",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 3550914,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/BlueMap-3.13-forge-1.18.1.jar"
+            }
+          },
+          {
+            "id": "com.mrcrayfish.furniture:cfm:7.0.0-pre35@jar",
+            "name": "MrCrayfish's Furniture Mod",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 2181196,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/cfm-7.0.0-pre35-1.18.2.jar"
+            }
+          },
+          {
+            "id": "com.mrcrayfish.guns:cgm:1.3.3@jar",
+            "name": "MrCrayfish's Gun Mod",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1675751,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/cgm-1.3.3-1.18.2.jar"
+            }
+          },
+          {
+            "id": "com.mrcrayfish:configured:2.0.1@jar",
+            "name": "Configured",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 277131,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/configured-2.0.1-1.18.2.jar"
+            }
+          },
+          {
+            "id": "com.supermartijn642:connectedglass:1.1.6@jar",
+            "name": "Connected Glass",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 784318,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/connectedglass-1.1.6-forge-mc1.18.jar"
+            }
+          },
+          {
+            "id": "com.simibubi:create:0.5.0.i@jar",
+            "name": "Create",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 13322194,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/create-1.18.2-0.5.0.i.jar"
+            }
+          },
+          {
+            "id": "nl.requios:effortlessbuilding:1.18-2.40@jar",
+            "name": "Effortless Building",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 540378,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/effortlessbuilding-1.18-2.40.jar"
+            }
+          },
+          {
+            "id": "io.github.kosmx.emotes:emotecraft:2.2.7-b.build.48@jar",
+            "name": "Emotecraft",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 673194,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/emotecraft-for-MC1.18.2-2.2.7-b.build.48-forge.jar"
+            }
+          },
+          {
+            "id": "com.exline:exlinefurniture:2.0.7@jar",
+            "name": "Exline's Furniture Mod",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1653288,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/exlinefurniture-forge-1.18.2-2.0.7.jar"
+            }
+          },
+          {
+            "id": "vectorwing.farmersdelight:farmersdelight:1.18.2-1.2.1@jar",
+            "name": "Farmer's Delight",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 2715301,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/FarmersDelight-1.18.2-1.2.1.jar"
+            }
+          },
+          {
+            "id": "malte0811.ferritecore:ferritecore:4.2.2@jar",
+            "name": "Ferrite Core",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 116626,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/ferritecore-4.2.2-forge.jar"
+            }
+          },
+          {
+            "id": "com.jozufozu:flywheel:0.6.8.a@jar",
+            "name": "Flywheel",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 543654,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/flywheel-forge-1.18.2-0.6.8.a.jar"
+            }
+          },
+          {
+            "id": "com.podloot:eyemod:2.1.1@jar",
+            "name": "EyeMod",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 497512,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/forge-1.18.2-eyemod-2.3.2a.jar"
+            }
+          },
+          {
+            "id": "com.mrcrayfish:framework:0.4.2@jar",
+            "name": "Framework",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 108363,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/framework-0.4.2-1.18.2.jar"
+            }
+          },
+          {
+            "id": "dev.felnull.imp:iammusicplayer:3.16.4@jar",
+            "name": "Iam Music Player",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 32234508,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/iammusicplayer-forge-1.18.2-3.16.4.jar"
+            }
+          },
+          {
+            "id": "mezz.jei:jei:10.2.1.1004@jar",
+            "name": "Just Enough Items",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1085199,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/jei-1.18.2-forge-10.2.1.1004.jar"
+            }
+          },
+          {
+            "id": "forge.com:jsblock:1.2.1-hotfix-1+mc1.18.2@jar",
+            "name": "Joban Client Mod",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 18694300,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/Joban-Client-Mod-1.18.2-1.2.1-hotfix-1.jar"
+            }
+          },
+          {
+            "id": "io.github.lightman314:lightmanscurrency:1.18.2-2.1.1.3@jar",
+            "name": "Lightman's Currency",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 2482913,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/lightmanscurrency-1.18.2-2.1.1.3.jar"
+            }
+          },
+          {
+            "id": "com.mcwbridges.kikoz:mcwbridges:2.0.7@jar",
+            "name": "Macaw's Bridges",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 570051,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/mcw-bridges-2.0.7-mc1.18.2forge.jar"
+            }
+          },
+          {
+            "id": "com.mcwdoors.kikoz:mcwdoors:1.0.9@jar",
+            "name": "Macaw's Doors",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 942437,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/mcw-doors-1.0.9forge-mc1.18.2.jar"
+            }
+          },
+          {
+            "id": "com.mcwfurnitures.kikoz:mcwfurnitures:3.1.0@jar",
+            "name": "Macaw's Furniture",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1401243,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/mcw-furniture-3.1.0-mc1.18.2forge.jar"
+            }
+          },
+          {
+            "id": "com.mcwlights.kikoz:mcwlights:1.0.5@jar",
+            "name": "Macaw's Lights and Lamps",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 331472,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/mcw-lights-1.0.5-mc1.18.2forge.jar"
+            }
+          },
+          {
+            "id": "com.mcwroofs.kikoz:mcwroofs:2.2.3@jar",
+            "name": "Macaw's Roofs",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1585637,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/mcw-roofs-2.2.3-mc1.18.2forge.jar"
+            }
+          },
+          {
+            "id": "com.mcwwindows.kikoz:mcwwindows:2.1.1@jar",
+            "name": "Macaw's Windows",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 776948,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/mcw-windows-2.1.1-mc1.18.2forge.jar"
+            }
+          },
+          {
+            "id": "mtr:mtr:1.18.2-3.2.2-hotfix-1@jar",
+            "name": "Minecraft Transit Railway",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 62228978,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/MTR-forge-1.18.2-3.2.2-hotfix-1.jar"
+            }
+          },
+          {
+            "id": "net.londonunderground:londonunderground:1.18.2-3.2.0-1.11@jar",
+            "name": "MTR London Underground Addon",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 33185525,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/MTR-LU-Addon-forge-1.18.2-3.2.0-1.11.jar"
+            }
+          },
+          {
+            "id": "top.mcmtr:msd:1.18.2-3.2.2-1.3.4-enhancement-1@jar",
+            "name": "MTR Station Decoration Addon",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 4902269,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/MTR-MSD-Addon-forge-1.18.2-3.2.2-1.3.4-enhancement-1.jar"
+            }
+          },
+          {
+            "id": "cn.zbx1425:mtrsteamloco:1.18.2-0.3.2@jar",
+            "name": "Nemo's Transit Expansion",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 6785476,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/MTR-NTE-forge-1.18.2-0.3.2.jar"
+            }
+          },
+          {
+            "id": "shetiphian.multibeds:multibeds:1.9.9@jar",
+            "name": "Multi-Beds",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 908596,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/multibeds-forge-1.18.2-1.9.9.jar"
+            }
+          },
+          {
+            "id": "net.coderbot.iris:oculus:1.5.2@jar",
+            "name": "Oculus",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 3423952,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/oculus-1.5.2.jar"
+            }
+          },
+          {
+            "id": "dev.kosmx.playeranim:playeranimator:1.0.2+1.18@jar",
+            "name": "Player Animator",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 181336,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/player-animation-lib-forge-1.0.2+1.18.jar"
+            }
+          },
+          {
+            "id": "me.jellysquid.mods.sodium.client:rubidium:0.5.6@jar",
+            "name": "Rubidium",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1342466,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/rubidium-0.5.6.jar"
+            }
+          },
+          {
+            "id": "shetiphian.core:shetiphiancore:3.10.14@jar",
+            "name": "ShetiPhian-Core",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 307142,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/shetiphiancore-forge-1.18.2-3.10.14.jar"
+            }
+          },
+          {
+            "id": "gollorum.signpost:signpost:1.18.2-2.01.0@jar",
+            "name": "Signpost",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 949389,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/signpost-1.18.2-2.01.0.jar"
+            }
+          },
+          {
+            "id": "xyz.przemyk:simpleplanes:1.18.2-5.2.1@jar",
+            "name": "Simple Planes",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 667849,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/simpleplanes-1.18.2-5.2.1.jar"
+            }
+          },
+          {
+            "id": "com.flanks255:simplylight:1.18.2-1.4.5-build.43@jar",
+            "name": "Simply Light",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 549014,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/simplylight-1.18.2-1.4.5-build.43.jar"
+            }
+          },
+          {
+            "id": "com.sonicether.soundphysics:sound_physics_remastered:1.18.2-1.0.6@jar",
+            "name": "Sound Physics Remastered",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 97678,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/soundphysics-forge-1.18.2-1.0.6.jar"
+            }
+          },
+          {
+            "id": "velizarbg.suggestion_tweaker:suggestion_tweaker:1.18.2-1.4.1@jar",
+            "name": "Suggestion Tweaker",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 25003,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/suggestion-tweaker-1.18.2-1.4.1-forge.jar"
+            }
+          },
+          {
+            "id": "com.supermartijn642.core:supermartijn642corelib:1.1.9@jar",
+            "name": "SuperMartijn642's Core Lib",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 472042,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/supermartijn642corelib-1.1.9-forge-mc1.18.jar"
+            }
+          },
+          {
+            "id": "de.maxhenkel:voicechat:1.18.2-2.4.8@jar",
+            "name": "Simple Voice Chat",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 7978305,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/voicechat-forge-1.18.2-2.4.8.jar"
+            }
+          },
+          {
+            "id": "mcp.mobius.waila:wthit:4.13.6@jar",
+            "name": "Wthit",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 397207,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/optionaloff/wthit-forge-4.13.6.jar"
+            },
+            "required": {
+              "value": false,
+              "def": false
+            }
+          },
+          {
+            "id": "xaero.minimap:xaerominimap:23.4.3@jar",
+            "name": "Xaero's Minimap",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 1307518,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/Xaeros_Minimap_23.4.3_Forge_1.18.2.jar"
+            }
+          },
+          {
+            "id": "xaero.map:xaeroworldmap:1.30.2@jar",
+            "name": "Xaero's World Map",
+            "type": "ForgeMod",
+            "artifact": {
+              "size": 784363,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/forgemods/required/XaerosWorldMap_1.30.2_Forge_1.18.2.jar"
+            }
+          },
+          {
+            "id": "options.txt",
+            "name": "options.txt",
+            "type": "File",
+            "artifact": {
+              "size": 9190,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/files/options.txt",
+              "path": "options.txt"
+            }
+          },
+          {
+            "id": "TMC resource packv3.zip",
+            "name": "TMC resource packv3.zip",
+            "type": "File",
+            "artifact": {
+              "size": 52107189,
+              "url": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/files/resourcepacks/TMC%20resource%20packv3.zip",
+              "path": "resourcepacks/TMC resource packv3.zip"
+            }
+          }
+        ]
+      }
     ]
-}
+  }

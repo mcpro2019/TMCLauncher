@@ -1,5 +1,5 @@
 # TMC Launcher
- A custom minecraft launcher for TMC(a private Minecraft server)
+ A custom minecraft launcher for TMC(a private Minecraft server)\
  TMC專用 Minecraft 啟動器。
 
 *目前知道是因爲需要請求存取才可以登入賬號。目前等待批准。\

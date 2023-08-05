@@ -1,5 +1,5 @@
 appId: 'tmclauncher'
-productName: 'The Mars City'
+productName: 'TMC Launcher'
 artifactName: '${productName}-setup-${version}.${ext}'
 
 copyright: 'Copyright © 2023-2023 MCPro2019'

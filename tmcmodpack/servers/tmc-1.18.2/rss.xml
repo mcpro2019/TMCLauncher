@@ -3,15 +3,15 @@
 <script/>
 <script/>
 <channel>
-<title>Helios Launcher demo</title>
+<title>TMC Launcher</title>
 <link>https://github.com/mcpro2019/TMCLauncher</link>
 <item>
-<title>Welcome to Helios Launcher!</title>
+<title>Welcome to TMC Launcher!</title>
 <content:encoded>
-<![CDATA[ <p>If you're watching this, you're using the demo distribution file.</p></br> <p>This file is not meant to be used in production environment. You can generate it using <a href="https://github.com/dscalzi/nebula">Nebula</a></p> ]]>
+<![CDATA[ <p>Welcome to TMC Launcher!</p></br> <p>Welcome to TMC Launcher!</a></p> ]]>
 </content:encoded>
 <!-- <dc:creator>GeekCorner</dc:creator> -->
-<pubDate>11 March 2023 03:49:01</pubDate>
+<pubDate>6/8/2023 01:12</pubDate>
 <!--       <slash:comments>2023</slash:comments> -->
 </item>
 <item>

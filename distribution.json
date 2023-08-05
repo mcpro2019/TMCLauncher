@@ -1,0 +1,56 @@
+{
+    "version": "1.0.0",
+    "discord": {
+        "clientId": "12334567890123456789",
+        "smallImageText": "WesterosCraft",
+        "smallImageKey": "seal-circle"
+    },
+    "rss": "",
+    "java": {
+        "supported": ">=17",
+        "suggestedMajor": 17,
+        "platformOptions": [
+          {
+            "platform": "darwin",
+            "architecture": "arm64",
+            "distribution": "CORRETTO"
+          }
+        ],
+        "ram": {
+          "recommended": 4096,
+          "minimum": 4096
+        }
+    },
+    "servers": [
+        {
+            "id": "TMC",
+            "name": "The Mars City",
+            "description": "test",
+            "icon": "https://cdn.discordapp.com/attachments/576019145770926100/1137321076330876948/The_Mars_Network.png",
+            "version": "0.0.1",
+            "address": "themarscity.ddns.net",
+            "minecraftVersion": "1.18.2",
+            "discord": {
+                "shortId": "TMC",
+                "largeImageText": "The Mars City",
+                "largeImageKey": "The Mars City"
+            },
+            "mainServer": true,
+            "autoconnect": true,
+            "modules": [
+                {
+                    "id": "net.minecraftforge:forge:1.18.2-40.2.10",
+                    "name": "Minecraft Forge 1.18.2-40.2.10",
+                    "type": "ForgeHosted",
+                    "artifact": {
+                        "size": 4450992,
+                        "MD5": "3fcc9b0104f0261397d3cc897e55a1c5",
+                        "url": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.11.2-13.20.1.2429/forge-1.11.2-13.20.1.2429-universal.jar"
+                    },
+                    "subModules": [
+                    ]
+                }
+            ]
+        }
+    ],
+}

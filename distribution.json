@@ -17,7 +17,7 @@
         ],
         "ram": {
           "recommended": 4096,
-          "minimum": 4096
+          "minimum": 1024
         }
     },
     "rss": "https://github.com/mcpro2019/TMCLauncher/raw/main/tmcmodpack/servers/tmc-1.18.2/rss.xml",

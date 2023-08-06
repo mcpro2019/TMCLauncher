@@ -42,24 +42,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app
-          path: |
-            dist/*.zip
-            dist/*.7z
-            dist/*.dmg
-            dist/*.exe
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/v')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          generate_release_notes: true
-          body: "auto generated"
-          files: |
-            /dist/*.zip
-            /dist/*.7z
-            /dist/*.dmg
-            /dist/*.exe
-          draft: true
-          prerelease: true
+          path: dist

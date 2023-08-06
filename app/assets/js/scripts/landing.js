@@ -135,6 +135,10 @@ document.getElementById('settingsMediaButton').onclick = async e => {
     switchView(getCurrentView(), VIEWS.settings)
 }
 
+document.getElementById('reloadButton').onclick = async e => {
+    await initNews()
+}
+
 // Bind avatar overlay button.
 document.getElementById('avatarOverlay').onclick = async e => {
     await prepareSettings()
@@ -851,13 +855,12 @@ function initNews(){
                 const lN = newsArr[0]
                 const cached = ConfigManager.getNewsCache()
                 let newHash = crypto.createHash('sha1').update(lN.content).digest('hex')
-                let newDate = new Date(lN.date)
+                let newDate = new Date(lN.updatetimeforcheck)
                 let isNew = false
 
                 if(cached.date != null && cached.content != null){
 
                     if(new Date(cached.date) >= newDate){
-
                         // Compare Content
                         if(cached.content !== newHash){
                             isNew = true
@@ -867,7 +870,7 @@ function initNews(){
                                 isNew = true
                                 showNewsAlert()
                             }
-                        }
+                    }
 
                     } else {
                         isNew = true
@@ -944,10 +947,11 @@ document.addEventListener('keydown', (e) => {
 function displayArticle(articleObject, index){
     newsArticleTitle.innerHTML = articleObject.title
     newsArticleTitle.href = articleObject.link
-    newsArticleAuthor.innerHTML = 'by ' + articleObject.author
+    newsArticleAuthor.innerHTML = articleObject.author + ' 發出'
     newsArticleDate.innerHTML = articleObject.date
-    newsArticleComments.innerHTML = articleObject.comments
-    newsArticleComments.href = articleObject.commentsLink
+    newsArticleComments.innerHTML = '更新時間: ' + articleObject.lastupdatetime
+    // newsArticleComments.innerHTML = articleObject.comments
+    // newsArticleComments.href = articleObject.commentsLink
     newsArticleContentScrollable.innerHTML = '<div id="newsArticleContentWrapper"><div class="newsArticleSpacerTop"></div>' + articleObject.content + '<div class="newsArticleSpacerBot"></div></div>'
     Array.from(newsArticleContentScrollable.getElementsByClassName('bbCodeSpoilerButton')).forEach(v => {
         v.onclick = () => {
@@ -955,7 +959,7 @@ function displayArticle(articleObject, index){
             text.style.display = text.style.display === 'block' ? 'none' : 'block'
         }
     })
-    newsNavigationStatus.innerHTML = index + ' of ' + newsArr.length
+    newsNavigationStatus.innerHTML = index + ' / ' + newsArr.length
     newsContent.setAttribute('article', index-1)
 }
 
@@ -986,7 +990,15 @@ async function loadNews(){
                     const el = $(items[i])
 
                     // Resolve date.
-                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('zh-TW', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    const dateforcheck = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+
+                    var lastupdatetime = new Date(el.find('pubDate').text()).toLocaleDateString('zh-TW', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    var updatetimeforcheck = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    if(el.find('lastBuildDate').text() != "") {
+                        lastupdatetime = new Date(el.find('lastBuildDate').text()).toLocaleDateString('zh-TW', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                        updatetimeforcheck = new Date(el.find('lastBuildDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    }
 
                     // Resolve comments.
                     let comments = el.find('slash\\:comments').text() || '0'
@@ -1002,7 +1014,8 @@ async function loadNews(){
 
                     let link   = el.find('link').text()
                     let title  = el.find('title').text()
-                    let author = el.find('dc\\:creator').text()
+                    //dc\\:creator
+                    let author = el.find('author').text()
 
                     // Generate article.
                     articles.push(
@@ -1013,7 +1026,10 @@ async function loadNews(){
                             author,
                             content,
                             comments,
-                            commentsLink: link + '#comments'
+                            commentsLink: link + '#comments',
+                            dateforcheck,
+                            lastupdatetime,
+                            updatetimeforcheck
                         }
                     )
                 }

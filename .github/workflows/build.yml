@@ -45,6 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           generate_release_notes: true
+          body: "auto generated"
           files: |
             /*.zip
             /*.7z

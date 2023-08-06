@@ -1,7 +1,10 @@
 
 name: Build
 
-on: push
+on: 
+  push:
+    tags:
+      - "Release v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   release:
@@ -65,3 +68,10 @@ jobs:
         with:
           name: TMC_Launcher_Win
           path: dist
+      
+      - name: Upload Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: testtag3
+          draft: true
+          files: foo.txt

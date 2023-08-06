@@ -1,0 +1,49 @@
+{
+    "html": {
+        "avatarOverlay": "編輯"
+    },
+    "js": {
+        "login": {
+            "error": {
+                "invalidValue": "* 無效",
+                "requiredValue": "* 必要",
+                "userMigrated": {
+                    "title": "登入時發生錯誤:<br>Invalid Credentials",
+                    "desc": "你已經把mojang賬號遷移到microsoft 嘗試使用電子郵件或返回使用microsoft登入"
+                },
+                "invalidCredentials": {
+                    "title": "登入時發生錯誤:<br>Invalid Credentials",
+                    "desc": "你的電子郵件或賬號名稱或密碼不正確 請重試登入"
+                },
+                "rateLimit": {
+                    "title": "登入時發生錯誤:<br>嘗試登入次數過多",
+                    "desc": "此賬號最近嘗試次數過多 請稍後再登入"
+                },
+                "noInternet": {
+                    "title": "登入時發生錯誤:<br>無法連接網絡",
+                    "desc": "你需要連接網絡來登入賬號 請在連接網絡後再登入"
+                },
+                "authDown": {
+                    "title": "登入時發生錯誤:<br>驗證伺服器離線",
+                    "desc": "Mojang's 驗證伺服器目前離線或無法存取 請稍後再登入 你可以在 <a href=\"https://help.mojang.com/\">Mojang's help portal</a> 查看伺服器狀態"
+                },
+                "notPaid": {
+                    "title": "登入時發生錯誤:<br>遊戲尚未購買",
+                    "desc": "登入的賬號並未購買遊戲<br>你可以在 <a href=\"https://minecraft.net/\">Minecraft.net</a> 購買"
+                },
+                "unknown": {
+                    "title": "登入時發生錯誤:<br>不明錯誤"
+                }
+            },
+            "login": "登入",
+            "loggingIn": "登入中",
+            "success": "成功",
+            "tryAgain": "重試"
+        },
+        "landing": {
+            "launch": {
+                "pleaseWait": "請等待..."
+            }
+        }
+    }
+}

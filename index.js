@@ -15,12 +15,17 @@ const { AZURE_CLIENT_ID, MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR, SHELL_OPCODE 
 // Setup auto updater.
 function initAutoUpdater(event, data) {
     autoUpdater.allowDowngrade = true
-    if(data){
+    if(data == "latest"){
+        autoUpdater.allowPrerelease = false
+    } else if(data == "beta"){
         autoUpdater.allowPrerelease = true
-    } else {
-        // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
-        // autoUpdater.allowPrerelease = true
+        autoUpdater.channel = "beta"
+    } else if(data == "dev"){
+        autoUpdater.allowPrerelease = true
+        autoUpdater.channel = "dev"
     }
+    // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
+    // autoUpdater.allowPrerelease = true
     
     if(isDev){
         autoUpdater.autoInstallOnAppQuit = false

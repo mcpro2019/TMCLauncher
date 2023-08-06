@@ -47,7 +47,8 @@ jobs:
         with:
           name: TMC_Launcher_Linux
           path: |
-            dist
+            dist/*.AppImage
+            dist/*.yml
 
       - name: Upload a Release Asset (mac)
         if: matrix.os == 'macos-latest'

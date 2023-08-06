@@ -38,8 +38,30 @@ jobs:
         run: npm run dist
         shell: bash
 
-      - name: Upload a Release Asset
+      - name: Upload a Release Asset (linux)
+        if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: app
+          name: TMC_Launcher_Linux
+          path: |
+            dist
+
+      - name: Upload a Release Asset (mac)
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: TMC_Launcher_Mac
+          path: |
+            dist/*.dmg
+            dist/*.blockmap
+            dist/*.AppImage
+            dist/*.yml
+            dist/.icon-ico
+            dist/.icon-icns
+
+      - name: Upload a Release Asset (win)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: TMC_Launcher_Win
           path: dist

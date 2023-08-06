@@ -16,7 +16,7 @@
                     <button class="settingsNavItem" rSc="settingsTabUpdate" id="settingsNavUpdate">更新</button>
                     <div id="settingsNavContentBottom">
                         <div class="settingsNavDivider"></div>
-                        <button id="settingsNavDone">完成</button>
+                        <button id="settingsNavDone">儲存並返回</button>
                     </div>
                 </div>
             </div>
@@ -276,10 +276,15 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">開啟BETA版</span>
+                    <span class="settingsFieldTitle">更新頻道</span>
                     <span class="settingsFieldDesc">BETA版包括一些實驗性功能是未被測試的<br>如果你目前正在使用BETA版，此選項會一直開啟</span>
                 </div>
                 <div class="settingsFieldRight">
+                    <select name="updatechannel" id="updatechannel">
+                        <option value="stable">穩定版</option>
+                        <option value="beta">BETA版</option>
+                        <option value="dev" disabled>Dev版</option>
+                    </select>
                     <label class="toggleSwitch">
                         <input type="checkbox" cValue="AllowPrerelease">
                         <span class="toggleSwitchSlider"></span>

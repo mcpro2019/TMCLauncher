@@ -178,6 +178,7 @@ async function initSettingsValues(){
  */
 function saveSettingsValues(){
     const sEls = document.getElementById('settingsContainer').querySelectorAll('[cValue]')
+    const updatechannel = document.getElementById('updatechannel')
     Array.from(sEls).map((v, index, arr) => {
         const cVal = v.getAttribute('cValue')
         const serverDependent = v.hasAttribute('serverDependent') // Means the first argument is the server id.
@@ -185,6 +186,19 @@ function saveSettingsValues(){
         const sFnOpts = []
         if(serverDependent) {
             sFnOpts.push(ConfigManager.getSelectedServer())
+        }
+        var uchannel = updatechannel.value
+        if(uchannel == "stable"){
+            ipcRenderer.send('autoUpdateAction', 'changeChannel', 'latest')
+            console.log("selected: " + uchannel)
+        }
+        else if(uchannel == "beta"){
+            ipcRenderer.send('autoUpdateAction', 'changeChannel', 'beta')
+            console.log("selected: " + uchannel)
+        }
+        else if(uchannel == "dev"){
+            ipcRenderer.send('autoUpdateAction', 'changeChannel', 'dev')
+            console.log("selected: " + uchannel)
         }
         if(typeof sFn === 'function'){
             if(v.tagName === 'INPUT'){
@@ -1435,8 +1449,8 @@ function populateVersionInformation(version, valueElement, titleElement, checkEl
     valueElement.innerHTML = version
     if(isPrerelease(version)){
         titleElement.innerHTML = 'BETA版'
-        titleElement.style.color = '#ff886d'
-        checkElement.style.background = '#ff886d'
+        titleElement.style.color = '#ffd240'
+        checkElement.style.background = '#ffd240'
     } else {
         titleElement.innerHTML = '穩定版'
         titleElement.style.color = null

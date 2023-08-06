@@ -54,6 +54,7 @@ jobs:
           path: |
             dist/*.AppImage
             dist/*.yml
+            dist/*.blockmap
 
       - name: Upload a Release Asset (mac)
         if: matrix.os == 'macos-latest'
@@ -74,10 +75,3 @@ jobs:
         with:
           name: TMC_Launcher_Win
           path: dist
-      
-      - name: Upload Asset
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: testtag3
-          draft: true
-          files: foo.txt

@@ -6,6 +6,9 @@
   "author": "MCPro2019",
   "license": "UNLICENSED",
   "homepage": "https://github.com/mcpro2019/TMCLauncher",
+  "build": {
+    "generateUpdatesFilesForAllChannels": true
+  },
   "bugs": {
     "url": "https://github.com/mcpro2019/TMCLauncher/issues"
   },

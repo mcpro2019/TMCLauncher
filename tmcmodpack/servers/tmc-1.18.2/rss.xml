@@ -11,11 +11,12 @@
 <![CDATA[ <h1>登入問題</h1><p>因爲Microsoft需要請求存取才可以登入賬號。目前等待批准。</p></br><a href="https://help.minecraft.net/hc/en-us/articles/16254801392141">查看詳情</a></br><h1>Login issue</h1><p>Known that currently cant login accoount through Microsoft. It is because it needs to request access to the Java game service APIs. Currently waiting for approval.</p> ]]>
 </content:encoded>
 <author>MCPro2019</author>
+<lastBuildDate>8/6/2023 01:46</lastBuildDate>
 <pubDate>8/6/2023 03:02</pubDate>
 <!--       <slash:comments>2023</slash:comments> -->
 </item>
 <item>
-<title>Welcome to TMC Launcher!</title>
+<title>歡迎!</title>
 <content:encoded>
 <![CDATA[ <p>Welcome to TMC Launcher!</p> ]]>
 </content:encoded>

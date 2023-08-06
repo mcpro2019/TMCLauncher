@@ -14,7 +14,7 @@ const { AZURE_CLIENT_ID, MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR, SHELL_OPCODE 
 
 // Setup auto updater.
 function initAutoUpdater(event, data) {
-
+    autoUpdater.allowDowngrade = true
     if(data){
         autoUpdater.allowPrerelease = true
     } else {
@@ -59,6 +59,17 @@ ipcMain.on('autoUpdateAction', (event, arg, data) => {
                 .catch(err => {
                     event.sender.send('autoUpdateNotification', 'realerror', err)
                 })
+            break
+        case 'changeChannel':
+            if(data == "latest"){
+                autoUpdater.channel = "latest"
+            }
+            else if(data == "beta"){
+                autoUpdater.channel = "beta"
+            }
+            else if(data == "dev"){
+                autoUpdater.channel = "dev"
+            }
             break
         case 'allowPrereleaseChange':
             if(!data){

@@ -7,9 +7,6 @@ on:
       - "Release v*" # Push events to matching v*, i.e. v1.0, v20.15.10
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'The branch to build'
-        required: true
       environment:
         description: 'The environment to deploy to'
         required: false

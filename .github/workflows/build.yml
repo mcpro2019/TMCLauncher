@@ -80,7 +80,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.head_commit.message }}
+          tag_name: ${{ github.event.head_commit.message }} + " build#" + ${{ github.run_attempt }}
           draft: true
           files: |
             dist/*.dmg
@@ -139,7 +139,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.head_commit.message }}
+          tag_name: ${{ github.event.head_commit.message }} + " build#" + ${{ github.run_attempt }}
           draft: true
           files: |
             dist/*.dmg

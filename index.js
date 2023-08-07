@@ -35,10 +35,15 @@ function initAutoUpdater(event, data) {
         autoUpdater.autoDownload = false
     }
     autoUpdater.on('update-available', (info) => {
-        event.sender.send('autoUpdateNotification', 'update-available', info)
+        if(autoUpdater.autoDownload == true){
+            event.sender.send('autoUpdateNotification', 'update-available-auto', info)
+        }
+        else{
+            event.sender.send('autoUpdateNotification', 'update-available', info)
+        }
     })
     autoUpdater.on('update-downloaded', (info) => {
-        event.sender.send('autoUpdateNotification', 'update-downloaded', info)
+        event.sender.send('autoUpdateNotification', 'update-downloading', info)
     })
     autoUpdater.on('update-not-available', (info) => {
         event.sender.send('autoUpdateNotification', 'update-not-available', info)
@@ -49,12 +54,26 @@ function initAutoUpdater(event, data) {
     autoUpdater.on('error', (err) => {
         event.sender.send('autoUpdateNotification', 'realerror', err)
     }) 
+    autoUpdater.on('download-progress', (progressObj) => {
+        let log_message = '速度: ' + progressObj.bytesPerSecond
+        log_message = log_message + ' - Downloaded ' + progressObj.percent + '%'
+        log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
+        if(autoUpdater.autoDownload == false){
+            event.sender.send('autoUpdateNotification', 'update-downloading-progress', log_message)
+        }
+    })
 }
 
 // Open channel to listen for update actions.
 ipcMain.on('autoUpdateAction', (event, arg, data) => {
     switch(arg){
         case 'initAutoUpdater':
+            console.log('Initializing auto updater.')
+            autoUpdater.autoDownload = false
+            initAutoUpdater(event, data)
+            event.sender.send('autoUpdateNotification', 'ready')
+            break
+        case 'initAutoUpdater-auto':
             console.log('Initializing auto updater.')
             initAutoUpdater(event, data)
             event.sender.send('autoUpdateNotification', 'ready')
@@ -64,6 +83,20 @@ ipcMain.on('autoUpdateAction', (event, arg, data) => {
                 .catch(err => {
                     event.sender.send('autoUpdateNotification', 'realerror', err)
                 })
+            break
+        case 'allowAutoDownload':
+            if(data == true){
+                autoUpdater.autoDownload = true
+            } else {
+                autoUpdater.autoDownload = false
+            }
+            break
+        case 'downloadUpdate':
+            autoUpdater.downloadUpdate()
+            event.sender.send('autoUpdateNotification', 'checkForChannel', autoUpdater.channel)
+            break
+        case 'checkForChannel':
+            event.sender.send('autoUpdateNotification', 'checkForChannel', autoUpdater.channel)
             break
         case 'changeChannel':
             if(data == "latest"){

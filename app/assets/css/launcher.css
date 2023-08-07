@@ -1381,6 +1381,18 @@ input:checked + .toggleSwitchSlider:before {
     transform: translateX(15px);
 }
 
+/* Update Channel dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    border-radius: 50px;
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid rgba(126, 126, 126, 0.57);
+}
+
 /* Range Slider styles. */
 .rangeSlider {
     width: 35%;
@@ -2020,6 +2032,34 @@ input:checked + .toggleSwitchSlider:before {
     margin-right: 10%;
 }
 
+/* Update managment */
+#settingsUpdateContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#settingsUpdateContainer {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.50);
+    margin-bottom: 20px;
+}
+
+#settingsUpdaterTitle {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.settingsUpdateContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    width: 100%;
+}
 /* Header for memory sliders. */
 .settingsMemoryHeader {
     font-size: 14px;
@@ -2411,12 +2451,15 @@ input:checked + .toggleSwitchSlider:before {
     padding-top: 10px;
     font-size: 14px;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    width:100%;
 }
 
 /* Update action button styles. */
 #settingsUpdateActionButton {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 10px;
     background: none;
     border: none;
@@ -2439,6 +2482,44 @@ input:checked + .toggleSwitchSlider:before {
     pointer-events: none;
 }
 
+#settingsUpdateActionStatus {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    outline: none;
+    text-align: left;
+    transition: 0.25s ease;
+}
+
+#settingsUpdateActionButton2 {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    text-align: left;
+    padding-left: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s ease;
+}
+#settingsUpdateActionButton2:hover,
+#settingsUpdateActionButton2:focus {
+    text-shadow: 0px 0px 20px white, 0px 0px 20px white, 0px 0px 20px white;
+}
+#settingsUpdateActionButton2:active {
+    text-shadow: 0px 0px 20px #c7c7c7, 0px 0px 20px #c7c7c7, 0px 0px 20px #c7c7c7;
+    color: #c7c7c7;
+}
+#settingsUpdateActionButton2:disabled {
+    pointer-events: none;
+}
 /*******************************************************************************
  *                                                                             *
  * Landing View (Structural Styles)                                            *

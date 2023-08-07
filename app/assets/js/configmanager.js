@@ -87,6 +87,7 @@ const DEFAULT_CONFIG = {
         },
         launcher: {
             updateChannel: "latest",
+            autoDownload: false,
             dataDirectory: dataPath
         }
     },
@@ -785,6 +786,11 @@ exports.getAllowPrerelease = function(def = false){
     return !def ? config.settings.launcher.allowPrerelease : DEFAULT_CONFIG.settings.launcher.allowPrerelease
 }
 */
+
+exports.getAutoDownload = function(def = false){
+    return !def ? config.settings.launcher.autoDownload : DEFAULT_CONFIG.settings.launcher.autoDownload
+}
+
 exports.getupdateChannel = function(def = false){
     return !def ? config.settings.launcher.updateChannel : DEFAULT_CONFIG.settings.launcher.updateChannel
 }
@@ -799,6 +805,11 @@ exports.setAllowPrerelease = function(allowPrerelease){
     config.settings.launcher.allowPrerelease = allowPrerelease
 }
 */
+
+exports.setAutoDownload = function(autoDownload){
+    config.settings.launcher.autoDownload = autoDownload
+}
+
 exports.setupdateChannel = function(updateChannel){
     config.settings.launcher.updateChannel = updateChannel
 }

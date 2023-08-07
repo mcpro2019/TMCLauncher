@@ -274,21 +274,38 @@
                 <span class="settingsTabHeaderText">啟動器設定</span>
                 <span class="settingsTabHeaderDesc">就是啟動器設定</span>
             </div>
-            <div class="settingsFieldContainer">
-                <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">更新頻道</span>
-                    <span class="settingsFieldDesc">BETA版包括一些實驗性功能是未被測試的<br>目前有穩定版和BETA版</span>
-                </div>
-                <div class="settingsFieldRight">
-                    <select name="updateChannel" id="updateChannel" cValue="updateChannel">
-                        <option value="stable">穩定版</option>
-                        <option value="beta">BETA版</option>
-                        <option value="dev" disabled>Dev版</option>
-                    </select>
-                    <!-- <label class="toggleSwitch"> -->
-                    <!--     <input type="checkbox" cValue="AllowPrerelease"> -->
-                    <!--     <span class="toggleSwitchSlider"></span> -->
-                    <!-- </label> -->
+            <div id="settingsUpdateContainer">
+                <div id="settingsUpdaterTitle">更新設定</div>
+                <div id="settingsUpdateContent">
+                    <div class="settingsUpdateContainer">
+                        <div class="settingsFieldLeft">
+                            <span class="settingsFieldTitle">更新頻道</span>
+                            <span class="settingsFieldDesc">BETA版包括一些實驗性功能是未被測試的<br>更改後會立即檢查更新</span>
+                        </div>
+                        <div class="settingsFieldRight">
+                            <select name="updateChannel" class="dropdown" id="updateChannel" cValue="updateChannel">
+                                <option value="latest">穩定版</option>
+                                <option value="beta">BETA版</option>
+                                <option value="dev" disabled>dev版</option>
+                            </select>
+                            <!-- <label class="toggleSwitch"> -->
+                            <!--     <input type="checkbox" cValue="AllowPrerelease"> -->
+                            <!--     <span class="toggleSwitchSlider"></span> -->
+                            <!-- </label> -->
+                        </div>
+                    </div>
+                    <div class="settingsUpdateContainer">
+                        <div class="settingsFieldLeft">
+                            <span class="settingsFieldTitle">自動下載更新</span>
+                            <span class="settingsFieldDesc">預設關閉</span>
+                        </div>
+                        <div class="settingsFieldRight">
+                            <label class="toggleSwitch">
+                                <input type="checkbox" cValue="AutoDownload">
+                                <span class="toggleSwitchSlider"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="settingsFileSelContainer">
@@ -376,6 +393,8 @@
                     </div>
                     <div id="settingsUpdateActionContainer">
                         <button id="settingsUpdateActionButton">檢查更新</button>
+                        <p id="settingsUpdateActionStatus"></p>
+                        <button id="settingsUpdateActionButton2" disabled></button>
                     </div>
                 </div>
             </div>

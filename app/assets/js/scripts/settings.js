@@ -167,8 +167,11 @@ async function initSettingsValues(){
                         v.setAttribute('value', Number.parseFloat(gFn.apply(null, gFnOpts)))
                     }
                 }
-            } else if(v.tagName === 'select'){
-                v.value = gFn.apply(null, gFnOpts)
+            } else if(v.tagName === 'SELECT'){
+                if(cVal === 'updateChannel'){
+                    v.value = gFn.apply(null, gFnOpts)
+
+                }
             }
         }
     }
@@ -211,6 +214,9 @@ function saveSettingsValues(){
                     if(cVal === 'AllowPrerelease'){
                         changeAllowPrerelease(v.checked)
                     }
+                    else if(cVal === 'AllowDownload'){
+                        changeAutoDownload(v.checked)
+                    }
                 }
             } else if(v.tagName === 'DIV'){
                 if(v.classList.contains('rangeSlider')){
@@ -232,21 +238,18 @@ function saveSettingsValues(){
                 }
             } else if(v.tagName === 'SELECT'){
                 uchannel = v.value
-                if(uchannel == "stable"){
+                if(uchannel == "latest"){
                     uchannel = "latest"
                     changeAllowPrerelease(false)
                     ipcRenderer.send('autoUpdateAction', 'changeChannel', 'latest')
-                    console.log("selected: " + uchannel)
                 }
                 else if(uchannel == "beta"){
                     changeAllowPrerelease(true)
                     ipcRenderer.send('autoUpdateAction', 'changeChannel', 'beta')
-                    console.log("selected: " + uchannel)
                 }
                 else if(uchannel == "dev"){
                     changeAllowPrerelease(true)
                     ipcRenderer.send('autoUpdateAction', 'changeChannel', 'dev')
-                    console.log("selected: " + uchannel)
                 }
                 sFnOpts.push(uchannel)
                 sFn.apply(null, sFnOpts)
@@ -334,6 +337,7 @@ function settingsNavItemListener(ele, fade = true){
 }
 
 const settingsNavDone = document.getElementById('settingsNavDone')
+const settingsupdateChannel = document.getElementById('updateChannel')
 
 /**
  * Set if the settings save (done) button is disabled.
@@ -356,6 +360,14 @@ function fullSettingsSave() {
 settingsNavDone.onclick = () => {
     fullSettingsSave()
     switchView(getCurrentView(), VIEWS.landing)
+}
+
+settingsupdateChannel.onchange = () => {
+    fullSettingsSave()
+    if(!isDev){
+        ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
+        settingsUpdateButtonStatus('檢查更新中...', true)
+    }
 }
 
 /**
@@ -1444,6 +1456,11 @@ function isPrerelease(version){
     return preRelComp != null && preRelComp.length > 0
 }
 
+function getUpdateChannel(version){
+    const channelval = ipcRenderer.send('autoUpdateAction', 'checkForChannel')
+    return channelval
+}
+
 /**
  * Utility method to display version information on the
  * About and Update settings tabs.
@@ -1456,9 +1473,16 @@ function isPrerelease(version){
 function populateVersionInformation(version, valueElement, titleElement, checkElement){
     valueElement.innerHTML = version
     if(isPrerelease(version)){
-        titleElement.innerHTML = 'BETA版'
-        titleElement.style.color = '#ffd240'
-        checkElement.style.background = '#ffd240'
+        if(version.includes("beta")){
+            titleElement.innerHTML = 'BETA版'
+            titleElement.style.color = '#ffd240'
+            checkElement.style.background = '#ffd240'
+        }
+        else if(version.includes("dev")){
+            titleElement.innerHTML = 'DEV版'
+            titleElement.style.color = '#ffd240'
+            checkElement.style.background = '#ffd240'
+        }
     } else {
         titleElement.innerHTML = '穩定版'
         titleElement.style.color = null
@@ -1525,6 +1549,8 @@ const settingsUpdateChangelogTitle = settingsTabUpdate.getElementsByClassName('s
 const settingsUpdateChangelogText  = settingsTabUpdate.getElementsByClassName('settingsChangelogText')[0]
 const settingsUpdateChangelogCont  = settingsTabUpdate.getElementsByClassName('settingsChangelogContainer')[0]
 const settingsUpdateActionButton   = document.getElementById('settingsUpdateActionButton')
+const settingsUpdateActionButton2   = document.getElementById('settingsUpdateActionButton2')
+const settingsUpdateActionStatus   = document.getElementById('settingsUpdateActionStatus')
 
 /**
  * Update the properties of the update action button.
@@ -1541,6 +1567,22 @@ function settingsUpdateButtonStatus(text, disabled = false, handler = null){
     }
 }
 
+function getUpdateButtonStatus(){
+    return settingsUpdateActionButton.innerHTML
+}
+
+function settingsUpdateButtonStatus2(text, disabled = false, handler = null){
+    settingsUpdateActionButton2.innerHTML = text
+    settingsUpdateActionButton2.disabled = disabled
+    if(handler != null){
+        settingsUpdateActionButton2.onclick = handler
+    }
+}
+
+function settingsUpdateStatusStatus(text){
+    settingsUpdateActionStatus.innerHTML = text
+}
+
 /**
  * Populate the update tab with relevant information.
  * 
@@ -1548,18 +1590,30 @@ function settingsUpdateButtonStatus(text, disabled = false, handler = null){
  */
 function populateSettingsUpdateInformation(data){
     if(data != null){
-        settingsUpdateTitle.innerHTML = `可用的新 ${isPrerelease(data.version) ? 'BETA版本' : '版本'}`
+        if(data.version.includes("beta")){
+            settingsUpdateTitle.innerHTML = `可用的新BETA版本`
+        }
+        else if(data.version.includes("dev")){
+            settingsUpdateTitle.innerHTML = `可用的新Dev版本`
+        }
+        else {
+            settingsUpdateTitle.innerHTML = `可用的新版本`
+        }
         settingsUpdateChangelogCont.style.display = null
         settingsUpdateChangelogTitle.innerHTML = data.releaseName
         settingsUpdateChangelogText.innerHTML = data.releaseNotes
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         
         if(process.platform === 'darwin'){
-            settingsUpdateButtonStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', false, () => {
+            settingsUpdateStatusStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', () => {
                 shell.openExternal(data.darwindownload)
             })
+            //settingsUpdateButtonStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', false, () => {
+            //    shell.openExternal(data.darwindownload)
+            //})
         } else {
-            settingsUpdateButtonStatus('下載中...', true)
+            // settingsUpdateButtonStatus('下載中...', true)
+            settingsUpdateStatusStatus('下載中...')
         }
     } else {
         settingsUpdateTitle.innerHTML = '你正在使用最新版本'
@@ -1569,6 +1623,12 @@ function populateSettingsUpdateInformation(data){
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
                 settingsUpdateButtonStatus('檢查更新中...', true)
+            }
+        })
+        settingsUpdateButtonStatus2('', true, () => {
+            if(!isDev){
+                ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
+                settingsUpdateButtonStatus2('檢查更新中...', true)
             }
         })
     }
@@ -1597,6 +1657,20 @@ async function prepareSettings(first = false) {
         setupSettingsTabs()
         initSettingsValidators()
         prepareUpdateTab()
+        var uchannel = "latest"
+        const sFnOpts = []
+        if(remote.app.getVersion().includes("dev")){
+            uchannel = "dev"
+        }
+        else if(remote.app.getVersion().includes("beta")){
+            uchannel = "beta"
+        }
+        else {
+            uchannel = "latest"
+        }
+        sFnOpts.push(uchannel)
+        ConfigManager['setupdateChannel'].apply(null, sFnOpts)
+        ipcRenderer.send('autoUpdateAction', 'changeChannel', uchannel)
     } else {
         await prepareModsTab()
     }

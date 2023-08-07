@@ -42,23 +42,60 @@ if(!isDev){
         switch(arg){
             case 'checking-for-update':
                 loggerAutoUpdater.info('Checking for update..')
-                settingsUpdateButtonStatus('檢查更新中...', true)
+                if(getUpdateButtonStatus() == "安裝"){
+                    settingsUpdateButtonStatus2('檢查更新中...', true)
+                }
+                else {
+                    settingsUpdateButtonStatus('檢查更新中...', true)
+                    settingsUpdateButtonStatus2('', true)
+                }
                 break
+            case 'update-downloading':
+                loggerAutoUpdater.info('Update downloading...')
+                settingsUpdateButtonStatus('下載中...', true, () => {
+                    if(!isDev){
+                        ipcRenderer.send('autoUpdateAction', 'installUpdateNow')
+                    }
+                })
+                settingsUpdateButtonStatus2('', false)
+                break
+            case 'update-downloading-progress':
+                settingsUpdateStatusStatus(info)
             case 'update-available':
                 loggerAutoUpdater.info('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/Helios-Launcher-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
+                    info.darwindownload = `https://github.com/mcpro2019/TMCLauncher/releases/download/v${info.version}/TMC-Launcher-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
                     showUpdateUI(info)
                 }
+
+                settingsUpdateButtonStatus('下載', false, () => {
+                    if(!isDev){
+                        ipcRenderer.send('autoUpdateAction', 'downloadupdate')
+                    }
+                })
+                break
+            case 'update-available-auto':
+                loggerAutoUpdater.info('New update available', info.version)
                 
+                if(process.platform === 'darwin'){
+                    info.darwindownload = `https://github.com/mcpro2019/TMCLauncher/releases/download/v${info.version}/TMC-Launcher-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
+                    showUpdateUI(info)
+                }
                 populateSettingsUpdateInformation(info)
                 break
             case 'update-downloaded':
-                loggerAutoUpdater.info('Update ' + info.version + ' ready to be installed.')
+                loggerAutoUpdater.info('Update ' + info.version + ' readyto be  installed.')
                 settingsUpdateButtonStatus('安裝', false, () => {
                     if(!isDev){
                         ipcRenderer.send('autoUpdateAction', 'installUpdateNow')
+                    }
+                })
+                settingsUpdateStatusStatus('更新已下載完成!')
+                settingsUpdateButtonStatus2('檢查更新', false, () => {
+                    if(!isDev){
+                        ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
+                        settingsUpdateButtonStatus2('檢查更新中...', true)
                     }
                 })
                 showUpdateUI(info)
@@ -66,6 +103,9 @@ if(!isDev){
             case 'update-not-available':
                 loggerAutoUpdater.info('No new update found.')
                 settingsUpdateButtonStatus('檢查更新')
+                break
+            case 'checkForChannel':
+                loggerAutoUpdater.info('Update channel detected: ' + info)
                 break
             case 'ready':
                 updateCheckListener = setInterval(() => {
@@ -102,6 +142,10 @@ if(!isDev){
  */
 function changeAllowPrerelease(val){
     ipcRenderer.send('autoUpdateAction', 'allowPrereleaseChange', val)
+}
+
+function changeAutoDownload(val){
+    ipcRenderer.send('autoUpdateAction', 'allowAutoDownload', val)
 }
 
 function showUpdateUI(info){

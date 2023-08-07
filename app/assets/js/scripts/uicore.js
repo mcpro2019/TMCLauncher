@@ -61,6 +61,7 @@ if(!isDev){
                 break
             case 'update-downloading-progress':
                 settingsUpdateStatusStatus(info)
+                break
             case 'update-available':
                 loggerAutoUpdater.info('New update available', info.version)
                 
@@ -71,9 +72,17 @@ if(!isDev){
 
                 settingsUpdateButtonStatus('下載', false, () => {
                     if(!isDev){
-                        ipcRenderer.send('autoUpdateAction', 'downloadupdate')
+                        ipcRenderer.send('autoUpdateAction', 'downloadUpdate')
+                        settingsUpdateButtonStatus('下載中...', true)
                     }
                 })
+                settingsUpdateButtonStatus2('檢查更新', false, () => {
+                    if(!isDev){
+                        ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
+                        settingsUpdateButtonStatus2('檢查更新中...', true)
+                    }
+                })
+                populateSettingsUpdateInformation(info)
                 break
             case 'update-available-auto':
                 loggerAutoUpdater.info('New update available', info.version)
@@ -104,9 +113,9 @@ if(!isDev){
                 loggerAutoUpdater.info('No new update found.')
                 settingsUpdateButtonStatus('檢查更新')
                 break
-            case 'checkForChannel':
-                loggerAutoUpdater.info('Update channel detected: ' + info)
-                break
+            // case 'checkForChannel':
+            //     loggerAutoUpdater.info('Update channel detected: ' + info)
+            //     break
             case 'ready':
                 updateCheckListener = setInterval(() => {
                     ipcRenderer.send('autoUpdateAction', 'checkForUpdate')

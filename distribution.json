@@ -2,8 +2,8 @@
     "version": "1.0.0",
     "discord": {
         "clientId": "12334567890123456789",
-        "smallImageText": "WesterosCraft",
-        "smallImageKey": "seal-circle"
+        "smallImageText": "TMC",
+        "smallImageKey": "TMC"
     },
     "rss": "https://firebasestorage.googleapis.com/v0/b/themarscity-mc.appspot.com/o/rss.xml?alt=media&token=44fbf10f-1bc0-44ed-a149-545e12416c7c",
     "java": {

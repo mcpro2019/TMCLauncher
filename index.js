@@ -14,19 +14,24 @@ const { AZURE_CLIENT_ID, MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR, SHELL_OPCODE 
 
 // Setup auto updater.
 function initAutoUpdater(event, data) {
-    autoUpdater.allowDowngrade = true
-    if(data == "latest"){
-        autoUpdater.allowPrerelease = false
-    } else if(data == "beta"){
-        autoUpdater.allowPrerelease = true
-        autoUpdater.channel = "beta"
-    } else if(data == "dev"){
-        autoUpdater.allowPrerelease = true
-        autoUpdater.channel = "dev"
-    }
-    // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
-    // autoUpdater.allowPrerelease = true
+
+    // if(data == "latest"){
+    //     autoUpdater.allowPrerelease = false
+    // } else if(data == "beta"){
+    //     autoUpdater.allowPrerelease = true
+    //     autoUpdater.channel = "beta"
+    // } else if(data == "dev"){
+    //     autoUpdater.allowPrerelease = true
+    //     autoUpdater.channel = "dev"
+    // }
     
+    if(data){
+        autoUpdater.allowPrerelease = true
+    } else {
+        // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
+        // autoUpdater.allowPrerelease = true
+    }
+
     if(isDev){
         autoUpdater.autoInstallOnAppQuit = false
         autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml')
@@ -43,7 +48,7 @@ function initAutoUpdater(event, data) {
         }
     })
     autoUpdater.on('update-downloaded', (info) => {
-        event.sender.send('autoUpdateNotification', 'update-downloading', info)
+        event.sender.send('autoUpdateNotification', 'update-downloaded', info)
     })
     autoUpdater.on('update-not-available', (info) => {
         event.sender.send('autoUpdateNotification', 'update-not-available', info)
@@ -93,22 +98,21 @@ ipcMain.on('autoUpdateAction', (event, arg, data) => {
             break
         case 'downloadUpdate':
             autoUpdater.downloadUpdate()
-            event.sender.send('autoUpdateNotification', 'checkForChannel', autoUpdater.channel)
             break
-        case 'checkForChannel':
-            event.sender.send('autoUpdateNotification', 'checkForChannel', autoUpdater.channel)
-            break
-        case 'changeChannel':
-            if(data == "latest"){
-                autoUpdater.channel = "latest"
-            }
-            else if(data == "beta"){
-                autoUpdater.channel = "beta"
-            }
-            else if(data == "dev"){
-                autoUpdater.channel = "dev"
-            }
-            break
+        // case 'checkForChannel':
+        //     event.sender.send('autoUpdateNotification', 'checkForChannel', autoUpdater.channel)
+        //     break
+        // case 'changeChannel':
+        //     if(data == "latest"){
+        //         autoUpdater.channel = "latest"
+        //     }
+        //     else if(data == "beta"){
+        //         autoUpdater.channel = "beta"
+        //     }
+        //     else if(data == "dev"){
+        //         autoUpdater.channel = "dev"
+        //     }
+        //     break
         case 'allowPrereleaseChange':
             if(!data){
                 const preRelComp = semver.prerelease(app.getVersion())

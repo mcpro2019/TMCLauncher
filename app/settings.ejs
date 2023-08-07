@@ -279,19 +279,19 @@
                 <div id="settingsUpdateContent">
                     <div class="settingsUpdateContainer">
                         <div class="settingsFieldLeft">
-                            <span class="settingsFieldTitle">更新頻道</span>
-                            <span class="settingsFieldDesc">BETA版包括一些實驗性功能是未被測試的<br>更改後會立即檢查更新</span>
+                            <span class="settingsFieldTitle">預發行版</span>
+                            <span class="settingsFieldDesc">預發行版包括BETA/Alpha/Dev等版本 版本裏的一些實驗性功能是未被測試的<br>更改後會立即檢查更新</span>
                         </div>
                         <div class="settingsFieldRight">
-                            <select name="updateChannel" class="dropdown" id="updateChannel" cValue="updateChannel">
+                            <!-- <select name="updateChannel" class="dropdown" id="updateChannel" cValue="updateChannel">
                                 <option value="latest">穩定版</option>
                                 <option value="beta">BETA版</option>
                                 <option value="dev" disabled>dev版</option>
-                            </select>
-                            <!-- <label class="toggleSwitch"> -->
-                            <!--     <input type="checkbox" cValue="AllowPrerelease"> -->
-                            <!--     <span class="toggleSwitchSlider"></span> -->
-                            <!-- </label> -->
+                            </select> -->
+                            <label class="toggleSwitch">
+                                <input id="AllowPrerelease" type="checkbox" cValue="AllowPrerelease">
+                                <span class="toggleSwitchSlider"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="settingsUpdateContainer">
@@ -351,7 +351,7 @@
                     </div>
                 </div>
                 <div id="settingsAboutButtons">
-                    <a href="https://github.com/dscalZi/HeliosLauncher/issues" id="settingsAboutSupportButton" class="settingsAboutButton">支援</a>
+                    <a href="https://discord.gg/C5BqNvyM5j" id="settingsAboutSupportButton" class="settingsAboutButton">支援</a>
                     <a href="#" id="settingsAboutDevToolsButton" class="settingsAboutButton">DevTools Console</a>
                     <a href="https://github.com/dscalzi/HeliosLauncher" id="settingsAboutSourceButton" class="settingsAboutButton">Original Source</a>
                 </div>

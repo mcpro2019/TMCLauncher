@@ -167,12 +167,12 @@ async function initSettingsValues(){
                         v.setAttribute('value', Number.parseFloat(gFn.apply(null, gFnOpts)))
                     }
                 }
-            } else if(v.tagName === 'SELECT'){
-                if(cVal === 'updateChannel'){
-                    v.value = gFn.apply(null, gFnOpts)
-
-                }
             }
+            // else if(v.tagName === 'SELECT'){
+            //     if(cVal === 'updateChannel'){
+            //         v.value = gFn.apply(null, gFnOpts)
+            //     }
+            // }
         }
     }
 
@@ -214,7 +214,7 @@ function saveSettingsValues(){
                     if(cVal === 'AllowPrerelease'){
                         changeAllowPrerelease(v.checked)
                     }
-                    else if(cVal === 'AllowDownload'){
+                    else if(cVal === 'AutoDownload'){
                         changeAutoDownload(v.checked)
                     }
                 }
@@ -236,24 +236,25 @@ function saveSettingsValues(){
                         sFn.apply(null, sFnOpts)
                     }
                 }
-            } else if(v.tagName === 'SELECT'){
-                uchannel = v.value
-                if(uchannel == "latest"){
-                    uchannel = "latest"
-                    changeAllowPrerelease(false)
-                    ipcRenderer.send('autoUpdateAction', 'changeChannel', 'latest')
-                }
-                else if(uchannel == "beta"){
-                    changeAllowPrerelease(true)
-                    ipcRenderer.send('autoUpdateAction', 'changeChannel', 'beta')
-                }
-                else if(uchannel == "dev"){
-                    changeAllowPrerelease(true)
-                    ipcRenderer.send('autoUpdateAction', 'changeChannel', 'dev')
-                }
-                sFnOpts.push(uchannel)
-                sFn.apply(null, sFnOpts)
-            }
+            } 
+            // else if(v.tagName === 'SELECT'){
+            //     uchannel = v.value
+            //     if(uchannel == "latest"){
+            //         uchannel = "latest"
+            //         changeAllowPrerelease(false)
+            //         ipcRenderer.send('autoUpdateAction', 'changeChannel', 'latest')
+            //     }
+            //     else if(uchannel == "beta"){
+            //         changeAllowPrerelease(true)
+            //         ipcRenderer.send('autoUpdateAction', 'changeChannel', 'beta')
+            //     }
+            //     else if(uchannel == "dev"){
+            //         changeAllowPrerelease(true)
+            //         ipcRenderer.send('autoUpdateAction', 'changeChannel', 'dev')
+            //     }
+            //     sFnOpts.push(uchannel)
+            //     sFn.apply(null, sFnOpts)
+            // }
         }
     })
 }
@@ -337,7 +338,8 @@ function settingsNavItemListener(ele, fade = true){
 }
 
 const settingsNavDone = document.getElementById('settingsNavDone')
-const settingsupdateChannel = document.getElementById('updateChannel')
+const AllowPrerelease = document.getElementById('AllowPrerelease')
+// const settingsupdateChannel = document.getElementById('updateChannel')
 
 /**
  * Set if the settings save (done) button is disabled.
@@ -362,7 +364,15 @@ settingsNavDone.onclick = () => {
     switchView(getCurrentView(), VIEWS.landing)
 }
 
-settingsupdateChannel.onchange = () => {
+// settingsupdateChannel.onchange = () => {
+//     fullSettingsSave()
+//     if(!isDev){
+//         ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
+//         settingsUpdateButtonStatus('檢查更新中...', true)
+//     }
+// }
+
+AllowPrerelease.onclick = () => {
     fullSettingsSave()
     if(!isDev){
         ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
@@ -1456,10 +1466,10 @@ function isPrerelease(version){
     return preRelComp != null && preRelComp.length > 0
 }
 
-function getUpdateChannel(version){
-    const channelval = ipcRenderer.send('autoUpdateAction', 'checkForChannel')
-    return channelval
-}
+// function getUpdateChannel(version){
+//     const channelval = ipcRenderer.send('autoUpdateAction', 'checkForChannel')
+//     return channelval
+// }
 
 /**
  * Utility method to display version information on the
@@ -1474,12 +1484,22 @@ function populateVersionInformation(version, valueElement, titleElement, checkEl
     valueElement.innerHTML = version
     if(isPrerelease(version)){
         if(version.includes("beta")){
-            titleElement.innerHTML = 'BETA版'
+            titleElement.innerHTML = '預發行版 - BETA'
+            titleElement.style.color = '#ffd240'
+            checkElement.style.background = '#ffd240'
+        }
+        else if(version.includes("alpha")){
+            titleElement.innerHTML = '預發行版 - Alpha'
+            titleElement.style.color = '#ffd240'
+            checkElement.style.background = '#ffd240'
+        }
+        else if(version.includes("rc")){
+            titleElement.innerHTML = '預發行版 - RC'
             titleElement.style.color = '#ffd240'
             checkElement.style.background = '#ffd240'
         }
         else if(version.includes("dev")){
-            titleElement.innerHTML = 'DEV版'
+            titleElement.innerHTML = '預發行版 - DEV'
             titleElement.style.color = '#ffd240'
             checkElement.style.background = '#ffd240'
         }
@@ -1591,10 +1611,16 @@ function settingsUpdateStatusStatus(text){
 function populateSettingsUpdateInformation(data){
     if(data != null){
         if(data.version.includes("beta")){
-            settingsUpdateTitle.innerHTML = `可用的新BETA版本`
+            settingsUpdateTitle.innerHTML = `可用的新預發行版版本(BETA)`
         }
         else if(data.version.includes("dev")){
-            settingsUpdateTitle.innerHTML = `可用的新Dev版本`
+            settingsUpdateTitle.innerHTML = `可用的新發行版版本(DEV)`
+        }
+        else if(data.version.includes("alpha")){
+            settingsUpdateTitle.innerHTML = `可用的新發行版版本(Alpha)`
+        }
+        else if(data.version.includes("rc")){
+            settingsUpdateTitle.innerHTML = `可用的新發行版版本(RC)`
         }
         else {
             settingsUpdateTitle.innerHTML = `可用的新版本`
@@ -1603,17 +1629,22 @@ function populateSettingsUpdateInformation(data){
         settingsUpdateChangelogTitle.innerHTML = data.releaseName
         settingsUpdateChangelogText.innerHTML = data.releaseNotes
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        
-        if(process.platform === 'darwin'){
-            settingsUpdateStatusStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', () => {
-                shell.openExternal(data.darwindownload)
-            })
-            //settingsUpdateButtonStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', false, () => {
-            //    shell.openExternal(data.darwindownload)
-            //})
-        } else {
-            // settingsUpdateButtonStatus('下載中...', true)
-            settingsUpdateStatusStatus('下載中...')
+        const gFnOpts = []
+        const gFn = ConfigManager['getAutoDownload']
+        var autodownload = gFn.apply(null, gFnOpts)
+
+        if(autodownload == true){
+            if(process.platform === 'darwin'){
+                settingsUpdateStatusStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', () => {
+                    shell.openExternal(data.darwindownload)
+                })
+                //settingsUpdateButtonStatus('正在從Github<span style="font-size: 10px;color: gray;text-shadow: none !important;">上下載。請關閉啟動器並運行dmg檔案進行更新</span>', false, () => {
+                //    shell.openExternal(data.darwindownload)
+                //})
+            } else {
+                settingsUpdateButtonStatus('下載中...', true)
+                //settingsUpdateStatusStatus('')
+            }
         }
     } else {
         settingsUpdateTitle.innerHTML = '你正在使用最新版本'
@@ -1657,20 +1688,40 @@ async function prepareSettings(first = false) {
         setupSettingsTabs()
         initSettingsValidators()
         prepareUpdateTab()
-        var uchannel = "latest"
+        var allowPrerelease = false
         const sFnOpts = []
         if(remote.app.getVersion().includes("dev")){
-            uchannel = "dev"
+            allowPrerelease = true
         }
         else if(remote.app.getVersion().includes("beta")){
-            uchannel = "beta"
+            allowPrerelease = true
+        }
+        else if(remote.app.getVersion().includes("rc")){
+            allowPrerelease = true
+        }
+        else if(remote.app.getVersion().includes("alpha")){
+            allowPrerelease = true
         }
         else {
-            uchannel = "latest"
+            allowPrerelease = false
         }
-        sFnOpts.push(uchannel)
-        ConfigManager['setupdateChannel'].apply(null, sFnOpts)
-        ipcRenderer.send('autoUpdateAction', 'changeChannel', uchannel)
+        sFnOpts.push(allowPrerelease)
+        ConfigManager['setAllowPrerelease'].apply(null, sFnOpts)
+        ipcRenderer.send('autoUpdateAction', 'allowPrereleaseChange', allowPrerelease)
+        // var uchannel = "latest"
+        // const sFnOpts = []
+        // if(remote.app.getVersion().includes("dev")){
+        //     uchannel = "dev"
+        // }
+        // else if(remote.app.getVersion().includes("beta")){
+        //     uchannel = "beta"
+        // }
+        // else {
+        //     uchannel = "latest"
+        // }
+        // sFnOpts.push(uchannel)
+        // ConfigManager['setupdateChannel'].apply(null, sFnOpts)
+        // ipcRenderer.send('autoUpdateAction', 'changeChannel', uchannel)
     } else {
         await prepareModsTab()
     }

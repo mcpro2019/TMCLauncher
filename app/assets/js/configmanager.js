@@ -74,7 +74,8 @@ function resolveSelectedRAM(ram) {
  * Static = Explicitly declared.
  * Dynamic = Calculated by a private function.
  * Resolved = Resolved externally, defaults to null.
- * allowPrerelease: false,
+ * updateChannel: "latest",
+ * 
  */
 const DEFAULT_CONFIG = {
     settings: {
@@ -86,7 +87,7 @@ const DEFAULT_CONFIG = {
             launchDetached: true
         },
         launcher: {
-            updateChannel: "latest",
+            allowPrerelease: false,
             autoDownload: false,
             dataDirectory: dataPath
         }
@@ -782,8 +783,8 @@ exports.setLaunchDetached = function(launchDetached){
  * @returns {boolean} Whether or not the launcher should download prerelease versions.
  */
 /**
-exports.getAllowPrerelease = function(def = false){
-    return !def ? config.settings.launcher.allowPrerelease : DEFAULT_CONFIG.settings.launcher.allowPrerelease
+exports.getupdateChannel = function(def = false){
+    return !def ? config.settings.launcher.updateChannel : DEFAULT_CONFIG.settings.launcher.updateChannel
 }
 */
 
@@ -791,8 +792,8 @@ exports.getAutoDownload = function(def = false){
     return !def ? config.settings.launcher.autoDownload : DEFAULT_CONFIG.settings.launcher.autoDownload
 }
 
-exports.getupdateChannel = function(def = false){
-    return !def ? config.settings.launcher.updateChannel : DEFAULT_CONFIG.settings.launcher.updateChannel
+exports.getAllowPrerelease = function(def = false){
+    return !def ? config.settings.launcher.allowPrerelease : DEFAULT_CONFIG.settings.launcher.allowPrerelease
 }
 
 /**
@@ -801,8 +802,9 @@ exports.getupdateChannel = function(def = false){
  * @param {boolean} launchDetached Whether or not the launcher should download prerelease versions.
  */
 /**
-exports.setAllowPrerelease = function(allowPrerelease){
-    config.settings.launcher.allowPrerelease = allowPrerelease
+
+exports.setupdateChannel = function(updateChannel){
+    config.settings.launcher.updateChannel = updateChannel
 }
 */
 
@@ -810,6 +812,6 @@ exports.setAutoDownload = function(autoDownload){
     config.settings.launcher.autoDownload = autoDownload
 }
 
-exports.setupdateChannel = function(updateChannel){
-    config.settings.launcher.updateChannel = updateChannel
+exports.setAllowPrerelease = function(allowPrerelease){
+    config.settings.launcher.allowPrerelease = allowPrerelease
 }

@@ -63,10 +63,10 @@ async function showMainUI(data){
     if(!isDev){
         loggerAutoUpdater.info('Initializing..')
         if(ConfigManager.isFirstLaunch()){
-            ipcRenderer.send('autoUpdateAction', 'initAutoUpdater', ConfigManager.getupdateChannel())
+            ipcRenderer.send('autoUpdateAction', 'initAutoUpdater', ConfigManager.getAllowPrerelease())
         }
         else{
-            ipcRenderer.send('autoUpdateAction', 'initAutoUpdater-auto', ConfigManager.getupdateChannel())
+            ipcRenderer.send('autoUpdateAction', 'initAutoUpdater-auto', ConfigManager.getAllowPrerelease())
         }
     }
 

@@ -89,7 +89,6 @@ jobs:
             dist/latest.yml
             dist/latest-win.yml
             dist/latest-linux.yml
-            dist/*.AppImage
             dist/*.exe
           prerelease: false
 
@@ -149,6 +148,5 @@ jobs:
             dist/latest.yml
             dist/latest-win.yml
             dist/latest-linux.yml
-            dist/*.AppImage
             dist/*.exe
           prerelease: true

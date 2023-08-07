@@ -80,14 +80,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.head_commit.message }} + " build#" + ${{ github.run_attempt }}
+          tag_name: ${{ github.event.head_commit.message }} build#${{ github.run_attempt }}
           draft: true
           files: |
             dist/*.dmg
             dist/*.blockmap
             dist/*.AppImage
             dist/latest.yml
-            dist/latest-win.yml
+            dist/latest-mac.yml
             dist/latest-linux.yml
             dist/*.exe
           prerelease: false
@@ -139,14 +139,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.head_commit.message }} + " build#" + ${{ github.run_attempt }}
+          tag_name: ${{ github.event.head_commit.message }} build#${{ github.run_attempt }}
           draft: true
           files: |
             dist/*.dmg
             dist/*.blockmap
             dist/*.AppImage
             dist/latest.yml
-            dist/latest-win.yml
+            dist/latest-mac.yml
             dist/latest-linux.yml
             dist/*.exe
           prerelease: true

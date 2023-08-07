@@ -77,6 +77,8 @@ jobs:
       
       - name: Upload Asset
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.event.head_commit.message }}
           draft: true
@@ -89,6 +91,7 @@ jobs:
             dist/latest-linux.yml
             dist/*.AppImage
             dist/*.exe
+          prerelease: false
 
   release-dev:
     runs-on: ${{ matrix.os }}
@@ -125,38 +128,17 @@ jobs:
         run: npm run dist
         shell: bash
 
-      - name: Upload a Release Asset (linux)
-        if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: TMC_Launcher_Linux
-          path: |
-            dist/*.AppImage
-            dist/*.yml
-            dist/*.blockmap
-
-      - name: Upload a Release Asset (mac)
-        if: matrix.os == 'macos-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: TMC_Launcher_Mac
-          path: |
-            dist/*.dmg
-            dist/*.blockmap
-            dist/*.AppImage
-            dist/*.yml
-            dist/.icon-ico
-            dist/.icon-icns
-
       - name: Upload a Release Asset (win)
         if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
           name: TMC_Launcher_Win
-          path: dist
+          path: dist/win-unpacked
       
       - name: Upload Asset
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.event.head_commit.message }}
           draft: true
@@ -169,3 +151,4 @@ jobs:
             dist/latest-linux.yml
             dist/*.AppImage
             dist/*.exe
+          prerelease: true
